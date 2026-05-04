@@ -16,6 +16,7 @@
             --dark: #1a1a1a;
             --light: #f4f7f6;
             --white: #ffffff;
+            --turq: #00A8E8; /* Imetumika kwenye pro-nav */
         }
 
         * {
@@ -35,19 +36,117 @@
             line-height: 1.6;
         }
 
+        /* Pro-Nav Styles */
+        .pro-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
 
+        .nav-left {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
 
+        .menu-icon {
+            width: 35px;
+            height: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
 
+        .menu-icon span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background: var(--turq);
+            border-radius: 10px;
+            transition: 0.4s;
+        }
 
+        .nav-right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex: 1;
+        }
 
-        
+        .logo-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
+        .brand-name {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
+        .logo-box img {
+            height: 50px;
+            width: auto;
+            border-radius: 4px;
+        }
 
+        .menu-overlay {
+            position: fixed;
+            top: 80px;
+            left: -100%;
+            width: 280px;
+            height: calc(100vh - 80px);
+            background: var(--white);
+            transition: 0.5s ease-in-out;
+            box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+            padding-top: 50px;
+            z-index: 1999;
+        }
 
+        .menu-overlay.active {
+            left: 0;
+        }
 
-        <style>
-        
+        .nav-links {
+            list-style: none;
+            padding-left: 40px;
+        }
+
+        .nav-links li {
+            margin-bottom: 25px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: 0.3s;
+            border-left: 0px solid var(--turq);
+        }
+
+        .nav-links li a:hover {
+            color: var(--turq);
+            padding-left: 10px;
+            border-left: 4px solid var(--turq);
+        }
+
+        .menu-icon.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+        .menu-icon.open span:nth-child(2) { opacity: 0; }
+        .menu-icon.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -139,7 +238,7 @@
             border-bottom: 5px solid var(--primary);
         }
 
-        /* Image Gallery (Boksi za Picha) */
+        /* Image Gallery */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -221,7 +320,7 @@
             text-decoration: none;
         }
 
-          .footer-dude {
+        .footer-dude {
             background: #111;
             color: #ccc;
             padding: 60px 5% 20px;
@@ -249,7 +348,31 @@
 </head>
 <body>
 
-    
+    <nav class="pro-nav">
+        <div class="nav-left">
+            <div class="menu-icon" id="menu-trigger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="logo-box">
+                <span class="brand-name">Zanzibar Turquoise</span>
+                <img src="63555.jpg" alt="Logo">
+            </div>
+        </div>
+
+        <div class="menu-overlay" id="nav-overlay">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tours">Our Tours</a></li>
+                <li><a href="#about">About Zanzibar</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
 
     <section id="home" class="hero">
         <h1>Discover Paradise with Us</h1>
@@ -350,7 +473,7 @@
         <i style="font-style: normal;">💬</i>
     </a>
 
-     <footer class="footer-dude">
+    <footer class="footer-dude">
         <div class="footer-box">
             <h3>About Zanzibar Turquoise</h3>
             <p>We are a professional tour operator based in the heart of Zanzibar. Our mission is to provide unique, sustainable, and unforgettable travel experiences for tourists from all over the globe.</p>
@@ -364,7 +487,7 @@
                 <li><a href="#">Privacy Policy</a></li>
             </ul>
         </div>
-        <div class="footer-box" id="contact">
+        <div class="footer-box" id="contact-footer">
             <h3>Contact Us</h3>
             <p>📍 Stone Town, Zanzibar, Tanzania</p>
             <p>📧 info@zanzibarturquoise.online</p>
@@ -376,13 +499,23 @@
         &copy; 2026 Zanzibar Turquoise Tours & Safaris. All Rights Reserved.
     </div>
 
-
-
-
-
-        
-
     <script>
+        // Hamburger Menu Logic
+        const menuBtn = document.getElementById('menu-trigger');
+        const overlay = document.getElementById('nav-overlay');
+
+        menuBtn.addEventListener('click', () => {
+            menuBtn.classList.toggle('open');
+            overlay.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuBtn.classList.remove('open');
+                overlay.classList.remove('active');
+            });
+        });
+
         // Form Submission Logic
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -390,182 +523,6 @@
             this.reset();
         });
     </script>
-
-
-
-
-
-<nav class="pro-nav">
-    <div class="nav-left">
-        <div class="menu-icon" id="menu-trigger">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-
-    <div class="nav-right">
-        <div class="logo-box">
-            <span class="brand-name">Zanzibar Turquoise</span>
-            <img src="63555.jpg" alt="Logo">
-        </div>
-    </div>
-
-    <div class="menu-overlay" id="nav-overlay">
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#tours">Our Tours</a></li>
-            <li><a href="#about">About Zanzibar</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-        </ul>
-    </div>
-</nav>
-
-<style>
-    :root {
-        --turq: #00A8E8;
-        --dark: #1a1a1a;
-        --white: #ffffff;
-    }
-
-    .pro-nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 5%;
-        background: var(--white);
-        position: fixed;
-        width: 100%;
-        top: 0;
-        left: 0;
-        z-index: 2000;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-
-    /* Upande wa Kushoto: Vichoro vitatu */
-    .nav-left {
-        display: flex;
-        align-items: center;
-        flex: 1;
-    }
-
-    .menu-icon {
-        width: 35px;
-        height: 25px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        cursor: pointer;
-    }
-
-    .menu-icon span {
-        display: block;
-        height: 3px;
-        width: 100%;
-        background: var(--turq);
-        border-radius: 10px;
-        transition: 0.4s;
-    }
-
-    /* Upande wa Kulia: Logo */
-    .nav-right {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        flex: 1;
-    }
-
-    .logo-box {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .brand-name {
-        font-weight: 700;
-        color: var(--dark);
-        font-size: 1.1rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .logo-box img {
-        height: 50px;
-        width: auto;
-        border-radius: 4px;
-    }
-
-    /* Menu inayofunika kioo ikibonyezwa */
-    .menu-overlay {
-        position: fixed;
-        top: 80px; /* Chini ya navbar */
-        left: -100%;
-        width: 280px;
-        height: calc(100vh - 80px);
-        background: var(--white);
-        transition: 0.5s ease-in-out;
-        box-shadow: 4px 0 10px rgba(0,0,0,0.1);
-        padding-top: 50px;
-    }
-
-    .menu-overlay.active {
-        left: 0;
-    }
-
-    .nav-links {
-        list-style: none;
-        padding-left: 40px;
-    }
-
-    .nav-links li {
-        margin-bottom: 25px;
-    }
-
-    .nav-links li a {
-        text-decoration: none;
-        color: var(--dark);
-        font-size: 1.2rem;
-        font-weight: 600;
-        transition: 0.3s;
-        border-left: 0px solid var(--turq);
-    }
-
-    .nav-links li a:hover {
-        color: var(--turq);
-        padding-left: 10px;
-        border-left: 4px solid var(--turq);
-    }
-
-    /* Madoido ya X ikifunguka */
-    .menu-icon.open span:nth-child(1) { transform: translateY(11px) rotate(45deg); }
-    .menu-icon.open span:nth-child(2) { opacity: 0; }
-    .menu-icon.open span:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
-</style>
-
-<script>
-    const menuBtn = document.getElementById('menu-trigger');
-    const overlay = document.getElementById('nav-overlay');
-
-    menuBtn.addEventListener('click', () => {
-        menuBtn.classList.toggle('open');
-        overlay.classList.toggle('active');
-    });
-
-    // Kufunga menu ikibonyezwa link yoyote
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-            menuBtn.classList.remove('open');
-            overlay.classList.remove('active');
-        });
-    });
-</script>
-
-
-
-
-
-
-    
 
 </body>
 </html>
