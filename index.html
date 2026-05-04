@@ -258,18 +258,29 @@
             text-decoration: none;
         }
 
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 40px;
+          .footer-dude {
+            background: #111;
+            color: #ccc;
+            padding: 60px 5% 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            border-top: 5px solid var(--primary);
         }
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h1 { font-size: 2.5rem; }
-            section { padding: 60px 5%; }
+        .footer-box h3 { color: var(--white); margin-bottom: 20px; }
+        .footer-box p { font-size: 0.9rem; line-height: 1.8; }
+        .footer-box ul { list-style: none; }
+        .footer-box ul li { margin-bottom: 10px; }
+        .footer-box ul li a { color: #ccc; text-decoration: none; }
+        .footer-box ul li a:hover { color: var(--primary); }
+
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #666;
+            font-size: 0.8rem;
         }
     </style>
 </head>
@@ -387,9 +398,37 @@
         <i style="font-style: normal;">💬</i>
     </a>
 
-    <footer>
-        <p>&copy; 2026 Zanzibar Turquoise Tours & Safaris. All Rights Reserved.</p>
+     <footer class="footer-dude">
+        <div class="footer-box">
+            <h3>About Zanzibar Turquoise</h3>
+            <p>We are a professional tour operator based in the heart of Zanzibar. Our mission is to provide unique, sustainable, and unforgettable travel experiences for tourists from all over the globe.</p>
+        </div>
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Book a Tour</a></li>
+                <li><a href="#">Airport Transfer</a></li>
+                <li><a href="#">Hotel Reservations</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+        <div class="footer-box" id="contact">
+            <h3>Contact Us</h3>
+            <p>📍 Stone Town, Zanzibar, Tanzania</p>
+            <p>📧 info@zanzibarturquoise.online</p>
+            <p>📞 +255 123 456 789</p>
+        </div>
     </footer>
+
+    <div class="copyright">
+        &copy; 2026 Zanzibar Turquoise Tours & Safaris. All Rights Reserved.
+    </div>
+
+
+
+
+
+        
 
     <script>
         // Form Submission Logic
