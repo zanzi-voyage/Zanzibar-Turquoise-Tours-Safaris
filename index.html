@@ -1,405 +1,195 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zanzibar Turquoise Tours & Safaris | Official Site</title>
-    
+    <title>Zanzibar Turquoise Tours & Safaris</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
     <style>
-        /* --- CSS STYLES --- */
         :root {
-            --primary: #00A8E8; /* Turquoise */
-            --secondary: #F9A825; /* Sun Yellow */
-            --accent: #2E7D32; /* Palm Green */
+            --primary: #00A8E8;
+            --secondary: #F9A825;
             --dark: #1a1a1a;
-            --light: #f4f7f6;
             --white: #ffffff;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        html { scroll-behavior: smooth; }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            line-height: 1.6;
-        }
-
-        /* Navigation */
+        /* Navbar kama Buttons */
         nav {
             background: var(--white);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 8%;
+            padding: 10px 5%;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-decoration: none;
-        }
+        .logo-area img { height: 50px; }
 
-        .logo-area img {
-            height: 60px;
-            border-radius: 5px;
-        }
+        nav ul { display: flex; list-style: none; gap: 15px; }
 
-        .logo-area span {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
-
+        /* Hapa ndio navbar inakuwa kama button */
         nav ul li a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 600;
+            padding: 8px 18px;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
             transition: 0.3s;
+            font-size: 0.9rem;
         }
 
         nav ul li a:hover {
-            color: var(--primary);
+            background: var(--primary);
+            color: white;
         }
 
-        /* Hero Section */
+        /* Hero */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1920&q=80');
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            color: white;
             text-align: center;
-            color: var(--white);
-            padding: 0 20px;
+            padding-top: 80px;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        /* Sections General */
-        section {
-            padding: 100px 8%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .underline {
-            width: 100px;
-            height: 4px;
-            background: var(--secondary);
-            margin: 0 auto;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-bottom: 5px solid var(--primary);
-        }
-
-        /* Image Gallery (Boksi za Picha) */
+        /* Gallery Boxes */
+        section { padding: 60px 5%; }
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
-
-        .gallery-item {
-            position: relative;
-            height: 350px;
+        .box {
+            height: 250px;
             border-radius: 15px;
             overflow: hidden;
-            cursor: pointer;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .overlay {
+        .box img { width: 100%; height: 100%; object-fit: cover; }
+        .box-text {
             position: absolute;
             bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 40%;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            background: rgba(0,0,0,0.6);
             color: white;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            transition: 0.3s;
-        }
-
-        /* Contact Section */
-        .contact-flex {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 50px;
-            background: var(--white);
-            padding: 50px;
-            border-radius: 20px;
-        }
-
-        .contact-info { flex: 1; min-width: 300px; }
-        .contact-form { flex: 2; min-width: 300px; }
-
-        .form-group { margin-bottom: 20px; }
-        .form-group input, .form-group textarea {
             width: 100%;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 1rem;
+            padding: 10px;
+            text-align: center;
         }
 
-        /* WhatsApp Button */
-        .whatsapp-btn {
+        /* LILE DUDE LA CHINI (Professional Footer) */
+        .footer-dude {
+            background: #111;
+            color: #ccc;
+            padding: 60px 5% 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            border-top: 5px solid var(--primary);
+        }
+
+        .footer-box h3 { color: var(--white); margin-bottom: 20px; }
+        .footer-box p { font-size: 0.9rem; line-height: 1.8; }
+        .footer-box ul { list-style: none; }
+        .footer-box ul li { margin-bottom: 10px; }
+        .footer-box ul li a { color: #ccc; text-decoration: none; }
+        .footer-box ul li a:hover { color: var(--primary); }
+
+        .copyright {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #666;
+            font-size: 0.8rem;
+        }
+
+        .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 20px;
+            right: 20px;
             background: #25d366;
             color: white;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 35px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
             text-decoration: none;
-        }
-
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 40px;
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            nav ul { display: none; }
-            .hero h1 { font-size: 2.5rem; }
-            section { padding: 60px 5%; }
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="logo-area">
-            <img src="63555.jpg" alt="Logo">
-            <span>Zanzibar Turquoise</span>
-        </a>
+        <div class="logo-area"><img src="63555.jpg" alt="Logo"></div>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#">Home</a></li>
             <li><a href="#tours">Tours</a></li>
+            <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
 
-    <section id="home" class="hero">
-        <h1>Discover Paradise with Us</h1>
-        <p>Explore the stunning turquoise waters and historic Stone Town with the most reliable guides in Zanzibar.</p>
-        <a href="#tours" class="btn btn-primary">Start Your Adventure</a>
-    </section>
+    <div class="hero">
+        <h1>Zanzibar Turquoise Tours</h1>
+        <p>Your Professional Gateway to the Spice Island</p>
+    </div>
 
-    <section id="about">
-        <div class="section-title">
-            <h2>Why Choose Us?</h2>
-            <div class="underline"></div>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>Local Expertise</h3>
-                <p>We know every corner of the Spice Island, from hidden beaches to historical ruins.</p>
-            </div>
-            <div class="service-card">
-                <h3>Private Tours</h3>
-                <p>Customized experiences tailored to your family, group, or honeymoon.</p>
-            </div>
-            <div class="service-card">
-                <h3>Best Rates</h3>
-                <p>Affordable packages with no hidden costs. High-quality service for a fair price.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="tours" style="background: #f0f4f8;">
-        <div class="section-title">
-            <h2>Our Top Destinations</h2>
-            <div class="underline"></div>
-        </div>
+    <section id="tours">
+        <h2 style="text-align:center; margin-bottom:30px;">Our Top Safaris</h2>
         <div class="gallery">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=800&q=80" alt="Stone Town">
-                <div class="overlay">
-                    <h3>Stone Town Tour</h3>
-                    <p>History, Architecture, & Spices</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="Safari Blue">
-                <div class="overlay">
-                    <h3>Safari Blue</h3>
-                    <p>Snorkeling & Sandbanks</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Prison Island">
-                <div class="overlay">
-                    <h3>Prison Island</h3>
-                    <p>Giant Tortoises & Clear Water</p>
-                </div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80" alt="Wildlife">
-                <div class="overlay">
-                    <h3>Tanzania Safaris</h3>
-                    <p>Wild Animals & Nature</p>
-                </div>
-            </div>
+            <div class="box"><img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=500"><div class="box-text">Stone Town</div></div>
+            <div class="box"><img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=500"><div class="box-text">Safari Blue</div></div>
+            <div class="box"><img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?w=500"><div class="box-text">Prison Island</div></div>
+            <div class="box"><img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=500"><div class="box-text">Wildlife Safari</div></div>
         </div>
     </section>
 
-    <section id="contact">
-        <div class="section-title">
-            <h2>Book Your Trip</h2>
-            <div class="underline"></div>
+    <footer class="footer-dude">
+        <div class="footer-box">
+            <h3>About Zanzibar Turquoise</h3>
+            <p>We are a professional tour operator based in the heart of Zanzibar. Our mission is to provide unique, sustainable, and unforgettable travel experiences for tourists from all over the globe.</p>
         </div>
-        <div class="contact-flex">
-            <div class="contact-info">
-                <h3>Get In Touch</h3>
-                <p>Feel free to reach out to us for a custom quote or any questions about Zanzibar.</p>
-                <br>
-                <p>📍 Stone Town, Zanzibar</p>
-                <p>📧 info@zanzibarturquoise.online</p>
-                <p>📞 +255 123 456 789</p>
-            </div>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <input type="text" placeholder="Full Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="5" placeholder="Which tour are you interested in?"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
-                </form>
-            </div>
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Book a Tour</a></li>
+                <li><a href="#">Airport Transfer</a></li>
+                <li><a href="#">Hotel Reservations</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
         </div>
-    </section>
-
-    <a href="https://wa.me/255123456789" class="whatsapp-btn" target="_blank">
-        <i style="font-style: normal;">💬</i>
-    </a>
-
-    <footer>
-        <p>&copy; 2026 Zanzibar Turquoise Tours & Safaris. All Rights Reserved.</p>
+        <div class="footer-box" id="contact">
+            <h3>Contact Us</h3>
+            <p>📍 Stone Town, Zanzibar, Tanzania</p>
+            <p>📧 info@zanzibarturquoise.online</p>
+            <p>📞 +255 123 456 789</p>
+        </div>
     </footer>
 
-    <script>
-        // Form Submission Logic
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you! Your inquiry has been sent successfully. We will contact you soon.');
-            this.reset();
-        });
-    </script>
+    <div class="copyright">
+        &copy; 2026 Zanzibar Turquoise Tours & Safaris. All Rights Reserved.
+    </div>
+
+    <a href="https://wa.me/255123456789" class="whatsapp-float">WA</a>
 
 </body>
 </html>
-
