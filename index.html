@@ -38,59 +38,148 @@
 
 
 nav {
-            background: var(--white);
+
+
+<nav class="navbar">
+    <div class="logo">
+        <img src="63555.jpg" alt="Logo">
+        <span>Zanzibar Turquoise</span>
+    </div>
+
+    <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+
+    <ul class="nav-list">
+        <li><a href="#home" class="nav-btn">Home</a></li>
+        <li><a href="#tours" class="nav-btn">Tours</a></li>
+        <li><a href="#about" class="nav-btn">About</a></li>
+        <li><a href="#contact" class="nav-btn">Contact</a></li>
+    </ul>
+</nav>
+
+<style>
+    /* CSS ya Navbar */
+    :root {
+        --primary-color: #00A8E8; /* Turquoise */
+        --text-dark: #333;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 5%;
+        background-color: #ffffff;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    .logo span {
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        text-transform: uppercase;
+    }
+
+    .nav-list {
+        display: flex;
+        list-style: none;
+        gap: 15px;
+    }
+
+    /* Style ya vitufe (buttons) */
+    .nav-btn {
+        text-decoration: none;
+        color: var(--text-dark);
+        font-weight: 600;
+        padding: 8px 20px;
+        border: 2px solid var(--primary-color);
+        border-radius: 25px;
+        transition: 0.3s ease;
+        font-size: 0.9rem;
+    }
+
+    .nav-btn:hover {
+        background-color: var(--primary-color);
+        color: #fff;
+    }
+
+    /* Hamburger Menu kwa Simu */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+    }
+
+    .bar {
+        height: 3px;
+        width: 25px;
+        background-color: var(--primary-color);
+        margin: 4px 0;
+        border-radius: 10px;
+        transition: 0.3s;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+        .menu-toggle {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 8%;
-            position: fixed;
+        }
+
+        .nav-list {
+            position: absolute;
+            top: 70px;
+            right: -100%;
+            background-color: #fff;
             width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        }
-
-        .logo-area {
-            display: flex;
+            height: 300px;
+            flex-direction: column;
             align-items: center;
-            gap: 15px;
-            text-decoration: none;
+            justify-content: center;
+            transition: 0.5s;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
 
-        .logo-area img {
-            height: 60px;
-            border-radius: 5px;
+        .nav-list.active {
+            right: 0;
         }
 
-        .logo-area span {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
+        .nav-list li {
+            margin: 15px 0;
         }
+    }
+</style>
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
+<script>
+    // JavaScript ya kufungua menu kwenye simu
+    const menu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-list');
 
-        nav ul li a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 600;
-            transition: 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--primary);
-        }
+    menu.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+</script>
 
 
 
 
-
-        
+        <style>
         
         /* Hero Section */
         .hero {
@@ -293,18 +382,7 @@ nav {
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo-area">
-            <img src="63555.jpg" alt="Logo">
-            <span>Zanzibar Turquoise</span>
-        </a>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#tours">Tours</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+    
 
     <section id="home" class="hero">
         <h1>Discover Paradise with Us</h1>
