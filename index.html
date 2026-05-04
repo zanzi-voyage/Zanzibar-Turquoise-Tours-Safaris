@@ -1,203 +1,405 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zanzibar Turquoise Tours & Safaris</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Zanzibar Turquoise Tours & Safaris | Official Site</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS STYLES --- */
+        :root {
+            --primary: #00A8E8; /* Turquoise */
+            --secondary: #F9A825; /* Sun Yellow */
+            --accent: #2E7D32; /* Palm Green */
+            --dark: #1a1a1a;
+            --light: #f4f7f6;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+        }
+
+        .logo-area img {
+            height: 60px;
+            border-radius: 5px;
+        }
+
+        .logo-area span {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Sections General */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .underline {
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 0 auto;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 5px solid var(--primary);
+        }
+
+        /* Image Gallery (Boksi za Picha) */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        /* Contact Section */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+            background: var(--white);
+            padding: 50px;
+            border-radius: 20px;
+        }
+
+        .contact-info { flex: 1; min-width: 300px; }
+        .contact-form { flex: 2; min-width: 300px; }
+
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul { display: none; }
+            .hero h1 { font-size: 2.5rem; }
+            section { padding: 60px 5%; }
+        }
+    </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <div class="logo">
-                <img src="63555.jpg" alt="Zanzibar Turquoise Logo">
-            </div>
-            <ul>
-                <li><a href="#home">Nyumbani</a></li>
-                <li><a href="#services">Huduma</a></li>
-                <li><a href="#about">Kuhusu Sisi</a></li>
-                <li><a href="#contact" class="btn-contact">Wasiliana Nasi</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav>
+        <a href="#" class="logo-area">
+            <img src="63555.jpg" alt="Logo">
+            <span>Zanzibar Turquoise</span>
+        </a>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#tours">Tours</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
 
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Gundua Uzuri wa Zanzibar</h1>
-            <p>Safari za kusisimua, bahari ya turquoise, na utamaduni wa kipekee.</p>
-            <a href="#services" class="cta-button">Angalia Safari Zetu</a>
+        <h1>Discover Paradise with Us</h1>
+        <p>Explore the stunning turquoise waters and historic Stone Town with the most reliable guides in Zanzibar.</p>
+        <a href="#tours" class="btn btn-primary">Start Your Adventure</a>
+    </section>
+
+    <section id="about">
+        <div class="section-title">
+            <h2>Why Choose Us?</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Local Expertise</h3>
+                <p>We know every corner of the Spice Island, from hidden beaches to historical ruins.</p>
+            </div>
+            <div class="service-card">
+                <h3>Private Tours</h3>
+                <p>Customized experiences tailored to your family, group, or honeymoon.</p>
+            </div>
+            <div class="service-card">
+                <h3>Best Rates</h3>
+                <p>Affordable packages with no hidden costs. High-quality service for a fair price.</p>
+            </div>
         </div>
     </section>
 
-    <section id="services" class="services">
-        <h2>Huduma Zetu</h2>
-        <div class="service-container">
-            <div class="service-box">
-                <h3>Stone Town Tour</h3>
-                <p>Gundua historia na majengo ya kale ya mji mkongwe.</p>
+    <section id="tours" style="background: #f0f4f8;">
+        <div class="section-title">
+            <h2>Our Top Destinations</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?auto=format&fit=crop&w=800&q=80" alt="Stone Town">
+                <div class="overlay">
+                    <h3>Stone Town Tour</h3>
+                    <p>History, Architecture, & Spices</p>
+                </div>
             </div>
-            <div class="service-box">
-                <h3>Safari Blue</h3>
-                <p>Furahia bahari, vyakula vya baharini na kuogelea na samaki.</p>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="Safari Blue">
+                <div class="overlay">
+                    <h3>Safari Blue</h3>
+                    <p>Snorkeling & Sandbanks</p>
+                </div>
             </div>
-            <div class="service-box">
-                <h3>Wildlife Safaris</h3>
-                <p>Safari za mbugani kuona wanyama pori Tanzania Bara.</p>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&w=800&q=80" alt="Prison Island">
+                <div class="overlay">
+                    <h3>Prison Island</h3>
+                    <p>Giant Tortoises & Clear Water</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=800&q=80" alt="Wildlife">
+                <div class="overlay">
+                    <h3>Tanzania Safaris</h3>
+                    <p>Wild Animals & Nature</p>
+                </div>
             </div>
         </div>
     </section>
+
+    <section id="contact">
+        <div class="section-title">
+            <h2>Book Your Trip</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="contact-flex">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <p>Feel free to reach out to us for a custom quote or any questions about Zanzibar.</p>
+                <br>
+                <p>📍 Stone Town, Zanzibar</p>
+                <p>📧 info@zanzibarturquoise.online</p>
+                <p>📞 +255 123 456 789</p>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Which tour are you interested in?"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <a href="https://wa.me/255123456789" class="whatsapp-btn" target="_blank">
+        <i style="font-style: normal;">💬</i>
+    </a>
 
     <footer>
-        <p>&copy; 2026 Zanzibar Turquoise Tours & Safaris. Haki zote zimehifadhiwa.</p>
+        <p>&copy; 2026 Zanzibar Turquoise Tours & Safaris. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // Form Submission Logic
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your inquiry has been sent successfully. We will contact you soon.');
+            this.reset();
+        });
+    </script>
 
 </body>
 </html>
 
-
-
-
-
-
-/* General Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-
-body {
-    line-height: 1.6;
-    color: #333;
-}
-
-/* Navigation */
-header {
-    background: #fff;
-    padding: 10px 5%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo img {
-    height: 60px; /* Rekebisha kulingana na logo yako */
-}
-
-nav ul {
-    display: flex;
-    list-style: none;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #00A8E8; /* Rangi ya Turquoise */
-}
-
-.btn-contact {
-    background: #00A8E8;
-    color: #fff !important;
-    padding: 8px 20px;
-    border-radius: 25px;
-}
-
-/* Hero Section */
-.hero {
-    height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1589979485637-f98c3e1469aa?auto=format&fit=crop&w=1350&q=80');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #fff;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    margin-bottom: 10px;
-}
-
-.cta-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 12px 30px;
-    background: #F9A825; /* Rangi ya Njano/Jua */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: 0.3s;
-}
-
-.cta-button:hover {
-    background: #00A8E8;
-}
-
-/* Services */
-.services {
-    padding: 80px 5%;
-    text-align: center;
-    background: #f4f4f4;
-}
-
-.services h2 {
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-}
-
-.service-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-.service-box {
-    background: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: 0.3s;
-}
-
-.service-box:hover {
-    transform: translateY(-10px);
-    border-bottom: 5px solid #00A8E8;
-}
-
-/* Footer */
-footer {
-    background: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    nav ul {
-        display: none; /* Unaweza kuongeza hamburger menu baadaye */
-    }
-}
